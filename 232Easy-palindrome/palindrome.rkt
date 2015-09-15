@@ -1,13 +1,11 @@
 #lang racket
 (define (prep-pd l)
   (filter (lambda (x)
-     (or
-      (and (> (char->integer x) 64) (< (char->integer x) 91))
-      (and (> (char->integer x) 96) (< (char->integer x) 123)))) l))
+            (and (> (char->integer x) 96) (< (char->integer x) 123))) l))
 
 (define (palindrome p)
   (cond
     [(equal? (prep-pd (string->list (string-downcase p)))
-          (reverse (prep-pd (string->list (string-downcase p))))) "Palindrome"]
+             (reverse (prep-pd (string->list (string-downcase p))))) "Palindrome"]
     [else "Not a palindrome"]))
-    
+
