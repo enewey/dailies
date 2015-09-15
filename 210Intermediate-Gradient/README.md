@@ -14,9 +14,13 @@ It is, however, perfectly acceptable to use a library to save your pixels in wha
 
 Your input will consist of three lines. The first line contains two numbers which is the width and the height of the resulting gradient. The other two lines consist of three numbers between 0 and 255 representing the colors that the gradient should transition between. The first color should be on the left edge of the image, the second color should be on the right edge of the image.
 So, for instance, the input
->500 100 
->255 255 0 
->0 0 255
+
+```
+500 100 
+255 255 0 
+0 0 255
+```
+
 means that you should draw a 500x100 gradient that transitions from yellow on the left side to blue on the right side.
 
 ###Output description
