@@ -1,0 +1,37 @@
+	<html>
+	<head>
+	<script type="text/javascript">
+		function wordsnake(sentence){
+			var words = sentence.split(" ");
+			var snake = [];
+			var isRight = false;
+			for (var i=0; i<words.length; i++)
+				snake.push({ "isRight": isRight=!isRight, "word": words[i], "length": words[i].length });
+			
+			var ret = "";
+			var horizontal = 0;
+			for (var i=0; i<snake.length; i++)
+			{
+				if (i != 0) { snake[i].word = snake[i].word.substring(1,snake[i].word.length); } //pop off first letter 
+				if (snake[i].isRight == true) {
+					ret += snake[i].word;
+					horizontal += snake[i].length-1;
+				}
+				else {
+					for (var x=0; x<snake[i].length-1; x++)	{
+						ret += "\n";
+						for (var y=0; y<horizontal; y++) { ret += " "; }
+						ret += snake[i].word.substring(x,x+1);
+					}
+				}
+			}
+			document.getElementById('output').value = ret;
+		}
+	</script>
+	</head>
+	<body>
+	<input type="text" id="sentence" />
+	<button onclick="wordsnake(document.getElementById('sentence').value)">Do it</button>
+	<textarea rows="50" cols="100" style='font-family: "Lucida Console", monospace;' id="output" disabled></textarea>
+	</body>
+	</html>
