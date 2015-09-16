@@ -1,37 +1,37 @@
-	<html>
-	<head>
-	<script type="text/javascript">
-	function sorter() { 
-		var string = document.getElementById('words').value;
-		var array = string.split(' ');
-		for (var i=0; i<array.length; i++) {
-			var specialChars = [];
-			var capitalLetters = [];
-			var subArray = array[i].split('');
-			for (var j=0; j<subArray.length; j++) {
-				if (subArray[j].toLowerCase().charCodeAt(0) < 97 || subArray[j].toLowerCase().charCodeAt(0) > 122) {
-					specialChars.push({ character:subArray[j], pos:(j+specialChars.length)});
-					subArray.splice(j,1);
-					j--;
-				}
-				else if (subArray[j] == subArray[j].toUpperCase()) {
-					capitalLetters.push(j);
-					subArray[j] = subArray[j].toLowerCase();
-				}
-			}	
-			array[i] = subArray.sort(function(a, b) { return ((a < b) ? -1 : (a > b) ? 1 : 0); });		
-			for (var k=0; k<capitalLetters.length; k++)
-				array[i].splice(capitalLetters[k], 1, array[i][k].toUpperCase());
-			for (var k=0; k<specialChars.length; k++)
-				array[i].splice(specialChars[k].pos, 0, specialChars[k].character);
-			array[i] = array[i].join('');
-		}
-		document.getElementById('output').innerHTML = "<p>"+array.join(' ')+"</p>";
+<html>
+<head>
+<script type="text/javascript">
+function sorter() { 
+	var string = document.getElementById('words').value;
+	var array = string.split(' ');
+	for (var i=0; i<array.length; i++) {
+		var specialChars = [];
+		var capitalLetters = [];
+		var subArray = array[i].split('');
+		for (var j=0; j<subArray.length; j++) {
+			if (subArray[j].toLowerCase().charCodeAt(0) < 97 || subArray[j].toLowerCase().charCodeAt(0) > 122) {
+				specialChars.push({ character:subArray[j], pos:(j+specialChars.length)});
+				subArray.splice(j,1);
+				j--;
+			}
+			else if (subArray[j] == subArray[j].toUpperCase()) {
+				capitalLetters.push(j);
+				subArray[j] = subArray[j].toLowerCase();
+			}
+		}	
+		array[i] = subArray.sort(function(a, b) { return ((a < b) ? -1 : (a > b) ? 1 : 0); });		
+		for (var k=0; k<capitalLetters.length; k++)
+			array[i].splice(capitalLetters[k], 1, array[i][k].toUpperCase());
+		for (var k=0; k<specialChars.length; k++)
+			array[i].splice(specialChars[k].pos, 0, specialChars[k].character);
+		array[i] = array[i].join('');
 	}
-	</script>
-	</head>
-	<body>
-	<input id="words" type="text" /><input type="button" onclick="sorter()" value="Do it!" />
-	<div id="output"></div>
-	</body>
-	</html>
+	document.getElementById('output').innerHTML = "<p>"+array.join(' ')+"</p>";
+}
+</script>
+</head>
+<body>
+<input id="words" type="text" /><input type="button" onclick="sorter()" value="Do it!" />
+<div id="output"></div>
+</body>
+</html>
